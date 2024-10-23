@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Combinaciones</title>
+    <style>
+        .number {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        .selected {
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        function toggleNumber(element, category) {
+            const selected = document.querySelectorAll(`.${category} .selected`).length;
+
+
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+            } else {
+                // Control de selección
+                if (selected < getRequiredCount(category)) {
+                    element.classList.add('selected');
+                } else {
+                    alert(`Ya has seleccionado el máximo de números para esta categoría.`);
+                }
+            }
+            updateSelectedNumbers(category);
+        }
+
+
+        function getRequiredCount(category) {
+            if (category === 'impares_bajos' || category === 'pares_bajos') {
+                return 3;
+            } else if (category === 'impares_altos') {
+                return 3;
+            } else if (category === 'pares_altos') {
+                return 2;
+            }
+            return 0;
+        }
+
+
+        function updateSelectedNumbers(category) {
+            const selected = document.querySelectorAll(`.${category} .selected`);
+            const numbers = Array.from(selected).map(el => el.innerText).join(',');
+            document.getElementById(category).value = numbers;
+        }
+
+
+        function enviarNumeros() {
+            document.getElementById("formulario").submit();
+        }
+    </script>
+</head>
+<body>
+    <h1>Generador de Combinaciones de Lotería</h1>
+    <h3>Selecciona los números necesarios:</h3>
+
+
+    <div class="category impares_bajos">
+        <h4>Impares Bajos (elige 3):</h4>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">1</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">3</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">5</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">7</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">9</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">11</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">13</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">15</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">17</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">19</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_bajos')">21</div>
+    </div>
+
+
+    <div class="category pares_bajos">
+        <h4>Pares Bajos (elige 3):</h4>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">2</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">4</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">6</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">8</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">10</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">12</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">14</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">16</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">18</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">20</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_bajos')">22</div>
+    </div>
+
+
+    <div class="category impares_altos">
+        <h4>Impares Altos (elige 3):</h4>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">23</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">25</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">27</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">29</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">31</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">33</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">35</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">37</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">39</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">41</div>
+        <div class="number" onclick="toggleNumber(this, 'impares_altos')">43</div>
+    </div>
+
+
+    <div class="category pares_altos">
+        <h4>Pares Altos (elige 2):</h4>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">24</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">26</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">28</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">30</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">32</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">34</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">36</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">38</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">40</div>
+        <div class="number" onclick="toggleNumber(this, 'pares_altos')">42</div>
+    </div>
+
+
+    <form id="formulario" method="post">
+        <input type="hidden" name="impares_bajos" id="impares_bajos" value="">
+        <input type="hidden" name="pares_bajos" id="pares_bajos" value="">
+        <input type="hidden" name="impares_altos" id="impares_altos" value="">
+        <input type="hidden" name="pares_altos" id="pares_altos" value="">
+        <button type="button" onclick="enviarNumeros()">Generar Combinaciones</button>
+    </form>
+
+
+    <h3>Combinaciones Generadas:</h3>
+    <ul>
+        {% for combinacion in combinaciones %}
+            <li>{{ combinacion }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
